@@ -776,10 +776,15 @@
             const dimensionAvg = (objectUnderstanding + spatialIntelligence + socialActivity) / 3;
             
             // 计算发展年龄
-            const avgAge = (dimensionAvg / 100) * 6;
-            const objectAge = (objectUnderstanding / 100) * 6;
-            const spatialAge = (spatialIntelligence / 100) * 6;
-            const socialAge = (socialActivity / 100) * 6;
+            // const avgAge = (dimensionAvg / 100) * 6;  
+            // const objectAge = (objectUnderstanding / 100) * 6;
+            // const spatialAge = (spatialIntelligence / 100) * 6;
+            // const socialAge = (socialActivity / 100) * 6;
+
+            const avgAge = (2/(1+Math.exp(-0.05*dimensionAvg))- 1) * 6;  
+            const objectAge = (2/(1+Math.exp(-0.05*objectUnderstanding))- 1) * 6;  
+            const spatialAge = (2/(1+Math.exp(-0.05*spatialIntelligence))- 1) * 6;  
+            const socialAge = (2/(1+Math.exp(-0.05*socialActivity))- 1) * 6;  
             
             return {
                 name: model.name,
