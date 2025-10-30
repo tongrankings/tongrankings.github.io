@@ -1,12 +1,12 @@
+[file name]: index_new_en.html
+[file content begin]
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TongTest</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -64,13 +64,13 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* 新增Banner样式 */
+        /* Banner styles */
         .banner {
             width: 100%;
             height: 400px;
             overflow: hidden;
             position: relative;
-            background-color: #1a237e; /* 备用背景色，以防图片加载失败 */
+            background-color: #1a237e; /* Fallback color */
         }
         
         .banner img {
@@ -83,7 +83,7 @@
         .banner video {
             width: 100%;
             height: 100%;
-            object-fit: cover;  /* 让视频铺满整个 banner 区域 */
+            object-fit: cover;
             display: block;
         }
 
@@ -93,7 +93,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3); /* 半透明遮罩，提高文字可读性 */
+            background: rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -353,59 +353,6 @@
             margin: 2rem 0;
         }
         
-        /* 三维可视化容器 - 重新布局 */
-        .stage-chart-wrapper {
-            display: flex;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        #stage-chart-container {
-            flex: 2;
-            height: 600px;
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        #stage-chart-info {
-            flex: 1;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            max-height: 600px;
-            overflow-y: auto;
-        }
-        
-        .stage-controls {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .stage-controls button {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-        
-        .stage-controls button:hover {
-            background-color: #0d47a1;
-        }
-        
-        .age-sphere {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-        
         footer {
             background-color: #1a237e;
             color: white;
@@ -462,121 +409,89 @@
             th, td {
                 padding: 0.5rem 0.75rem;
             }
-            
-            .stage-chart-wrapper {
-                flex-direction: column;
-            }
-            
-            #stage-chart-container {
-                height: 400px;
-            }
-            
-            #stage-chart-info {
-                max-height: none;
-            }
         }
-
-        #infoPanel {
-            position: absolute;
-            padding: 8px 12px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            font-size: 14px;
-            display: none; /* 默认隐藏 */
-            pointer-events: none; /* 不挡鼠标事件 */
-        }
-
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1>TongTest-通用具身交互测试平台</h1>
+            <h1>TongTest - General Embodied Interaction Testing Platform</h1>
             <nav>
                 <ul>
-                    <li><a href="#" class="active" data-view="ability">能力视图</a></li>
-                    <li><a href="#" data-view="dimension">维度视图</a></li>
-                    <li><a href="#" data-view="stage">发展阶段对照榜</a></li>
-                    <li><a href="#" data-view="about">关于我们</a></li>
+                    <li><a href="#" class="active" data-view="ability">Ability View</a></li>
+                    <li><a href="#" data-view="dimension">Dimension View</a></li>
+                    <li><a href="#" data-view="about">About Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     
-    <!-- 新增Banner区域 -->
+    <!-- Banner Section -->
     <div class="banner">
-        <!-- 请将src属性中的"banner.jpg"替换为您的本地图片路径 -->
         <img src="./banner.png" alt="TongTest Banner">
-
-
         <div class="banner-overlay">
             <div class="banner-text">
-                <h2>TongTest - AGI新时代的北极星</h2>
-                <p> 全面评估AI智能体在类人评估体系中的多维度发展水平</p>
+                <h2>TongTest - The North Star in the New Era of AGI</h2>
+                <p>Comprehensively evaluate the multi-dimensional development level of AI agents in human-like evaluation systems</p>
             </div>
         </div>
     </div>
-
-    <div id="infoPanel"></div>
     
     <main>
         <div class="view-switcher">
-            <div class="view-option active" data-view="ability">能力视图</div>
-            <div class="view-option" data-view="dimension">维度视图</div>
-            <div class="view-option" data-view="stage">发展阶段对照榜</div>
+            <div class="view-option active" data-view="ability">Ability View</div>
+            <div class="view-option" data-view="dimension">Dimension View</div>
         </div>
         
-        <!-- 能力视图内容 -->
+        <!-- Ability View Content -->
         <section class="section" id="ability-view">
-            <h2>测试任务介绍</h2>
-            <p>本平台对多模态大模型在8项核心测试任务上的表现进行评估，全面衡量模型在物品识别、空间理解、任务规划等方面的能力。</p>
+            <h2>Test Task Introduction</h2>
+            <p>This platform evaluates the performance of multimodal large models on 8 core test tasks, comprehensively measuring model capabilities in object recognition, spatial understanding, task planning, and more.</p>
             
             <div class="tasks-grid">
                 <div class="task-card">
-                    <h4>物品计数</h4>
-                    <p>评估模型识别并统计场景中特定物品数量的能力。</p>
+                    <h4>Object Counting</h4>
+                    <p>Evaluate the model's ability to identify and count specific objects in a scene.</p>
                 </div>
                 <div class="task-card">
-                    <h4>准备行李</h4>
-                    <p>测试模型根据旅行需求选择和整理合适物品的能力。</p>
+                    <h4>Packing Luggage</h4>
+                    <p>Test the model's ability to select and organize appropriate items based on travel needs.</p>
                 </div>
                 <div class="task-card">
-                    <h4>搭建积木</h4>
-                    <p>评估模型理解和执行积木搭建指令的空间推理与操作能力。</p>
+                    <h4>Building Blocks</h4>
+                    <p>Evaluate the model's spatial reasoning and operational ability to understand and execute block building instructions.</p>
                 </div>
                 <div class="task-card">
-                    <h4>智慧拼图</h4>
-                    <p>测试模型识别图案并完成拼图任务的视觉推理能力。</p>
+                    <h4>Smart Puzzle</h4>
+                    <p>Test the model's visual reasoning ability to recognize patterns and complete puzzle tasks.</p>
                 </div>
                 <div class="task-card">
-                    <h4>理解按钮</h4>
-                    <p>评估模型识别按钮功能并预测操作结果的能力。</p>
+                    <h4>Understanding Buttons</h4>
+                    <p>Evaluate the model's ability to identify button functions and predict operation results.</p>
                 </div>
                 <div class="task-card">
-                    <h4>整理桌面</h4>
-                    <p>测试模型根据物品类别和空间关系进行合理摆放的能力。</p>
+                    <h4>Tidying Desk</h4>
+                    <p>Test the model's ability to arrange items reasonably based on categories and spatial relationships.</p>
                 </div>
                 <div class="task-card">
-                    <h4>打扫房间</h4>
-                    <p>评估模型规划清洁任务并执行合理操作序列的能力。</p>
+                    <h4>Cleaning Room</h4>
+                    <p>Evaluate the model's ability to plan cleaning tasks and execute reasonable operation sequences.</p>
                 </div>
                 <div class="task-card">
-                    <h4>挑选礼物</h4>
-                    <p>测试模型根据人物关系和场景需求选择合适礼物的能力。</p>
+                    <h4>Choosing Gifts</h4>
+                    <p>Test the model's ability to select appropriate gifts based on personal relationships and scenario requirements.</p>
                 </div>
             </div>
         </section>
         
         <section class="section" id="ability-results">
-            <h2>模型性能对比</h2>
+            <h2>Model Performance Comparison</h2>
             
             <div class="controls">
                 <div class="model-selectors" id="modelSelectors">
-                    <!-- 模型选择器将通过JavaScript动态生成 -->
+                    <!-- Model selectors will be dynamically generated by JavaScript -->
                 </div>
-                <button class="select-all" id="selectAllBtn">全选/取消全选</button>
+                <button class="select-all" id="selectAllBtn">Select All/Deselect All</button>
             </div>
             
             <div class="chart-container">
@@ -586,67 +501,67 @@
             <table id="resultsTable">
                 <thead>
                     <tr>
-                        <th data-sort="name">模型 <i class="fas fa-sort"></i></th>
-                        <th data-sort="avg">平均得分 <i class="fas fa-sort"></i></th>
-                        <th data-sort="0">物品计数 <i class="fas fa-sort"></i></th>
-                        <th data-sort="1">准备行李 <i class="fas fa-sort"></i></th>
-                        <th data-sort="2">搭建积木 <i class="fas fa-sort"></i></th>
-                        <th data-sort="3">智慧拼图 <i class="fas fa-sort"></i></th>
-                        <th data-sort="4">理解按钮 <i class="fas fa-sort"></i></th>
-                        <th data-sort="5">整理桌面 <i class="fas fa-sort"></i></th>
-                        <th data-sort="6">打扫房间 <i class="fas fa-sort"></i></th>
-                        <th data-sort="7">挑选礼物 <i class="fas fa-sort"></i></th>
+                        <th data-sort="name">Model <i class="fas fa-sort"></i></th>
+                        <th data-sort="avg">Average Score <i class="fas fa-sort"></i></th>
+                        <th data-sort="0">Object Counting <i class="fas fa-sort"></i></th>
+                        <th data-sort="1">Packing Luggage <i class="fas fa-sort"></i></th>
+                        <th data-sort="2">Building Blocks <i class="fas fa-sort"></i></th>
+                        <th data-sort="3">Smart Puzzle <i class="fas fa-sort"></i></th>
+                        <th data-sort="4">Understanding Buttons <i class="fas fa-sort"></i></th>
+                        <th data-sort="5">Tidying Desk <i class="fas fa-sort"></i></th>
+                        <th data-sort="6">Cleaning Room <i class="fas fa-sort"></i></th>
+                        <th data-sort="7">Choosing Gifts <i class="fas fa-sort"></i></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 表格内容将通过JavaScript动态生成 -->
+                    <!-- Table content will be dynamically generated by JavaScript -->
                 </tbody>
             </table>
         </section>
         
-        <!-- 维度视图内容 -->
+        <!-- Dimension View Content -->
         <section class="section hidden" id="dimension-view">
-            <h2>测试维度介绍</h2>
-            <p>本平台将8项测试任务归纳为3个核心维度，从不同角度评估多模态大模型的综合能力。</p>
+            <h2>Test Dimension Introduction</h2>
+            <p>This platform categorizes the 8 test tasks into 3 core dimensions, evaluating the comprehensive capabilities of multimodal large models from different perspectives.</p>
             
             <div class="dimension-grid">
                 <div class="dimension-card">
-                    <h4>物体理解维度</h4>
-                    <p>评估模型对物体识别、计数、价值评估与选择的能力</p>
+                    <h4>Object Understanding Dimension</h4>
+                    <p>Evaluate the model's ability in object recognition, counting, value assessment, and selection</p>
                     <ul>
-                        <li>物品计数：识别并统计场景中特定物品数量</li>
-                        <li>挑选礼物：根据场景需求选择合适的物品</li>
+                        <li>Object Counting: Identify and count specific objects in a scene</li>
+                        <li>Choosing Gifts: Select appropriate items based on scenario requirements</li>
                     </ul>
                 </div>
                 <div class="dimension-card">
-                    <h4>空间智能维度</h4>
-                    <p>评估模型的空间推理、具身任务规划能力</p>
+                    <h4>Spatial Intelligence Dimension</h4>
+                    <p>Evaluate the model's spatial reasoning and embodied task planning capabilities</p>
                     <ul>
-                        <li>搭建积木：理解和执行积木搭建指令</li>
-                        <li>智慧拼图：识别图案并完成拼图任务</li>
-                        <li>理解按钮：识别按钮功能并预测操作结果</li>
+                        <li>Building Blocks: Understand and execute block building instructions</li>
+                        <li>Smart Puzzle: Recognize patterns and complete puzzle tasks</li>
+                        <li>Understanding Buttons: Identify button functions and predict operation results</li>
                     </ul>
                 </div>
                 <div class="dimension-card">
-                    <h4>社会活动维度</h4>
-                    <p>评估模型在社会场景中的规划和执行能力</p>
+                    <h4>Social Activity Dimension</h4>
+                    <p>Evaluate the model's planning and execution capabilities in social scenarios</p>
                     <ul>
-                        <li>整理桌面：根据物品类别和空间关系进行合理摆放</li>
-                        <li>打扫房间：规划清洁任务并执行合理操作序列</li>
-                        <li>准备行李：根据旅行需求选择和整理合适物品</li>
+                        <li>Tidying Desk: Arrange items reasonably based on categories and spatial relationships</li>
+                        <li>Cleaning Room: Plan cleaning tasks and execute reasonable operation sequences</li>
+                        <li>Packing Luggage: Select and organize appropriate items based on travel needs</li>
                     </ul>
                 </div>
             </div>
         </section>
         
         <section class="section hidden" id="dimension-results">
-            <h2>模型维度能力对比</h2>
+            <h2>Model Dimension Capability Comparison</h2>
             
             <div class="controls">
                 <div class="model-selectors" id="dimensionModelSelectors">
-                    <!-- 维度视图的模型选择器将通过JavaScript动态生成 -->
+                    <!-- Dimension view model selectors will be dynamically generated by JavaScript -->
                 </div>
-                <button class="select-all" id="dimensionSelectAllBtn">全选/取消全选</button>
+                <button class="select-all" id="dimensionSelectAllBtn">Select All/Deselect All</button>
             </div>
             
             <div class="chart-container">
@@ -656,85 +571,41 @@
             <table id="dimensionResultsTable">
                 <thead>
                     <tr>
-                        <th data-sort="name">模型 <i class="fas fa-sort"></i></th>
-                        <th data-sort="avg">平均得分 <i class="fas fa-sort"></i></th>
-                        <th data-sort="0">物体理解 <i class="fas fa-sort"></i></th>
-                        <th data-sort="1">空间智能 <i class="fas fa-sort"></i></th>
-                        <th data-sort="2">社会活动 <i class="fas fa-sort"></i></th>
+                        <th data-sort="name">Model <i class="fas fa-sort"></i></th>
+                        <th data-sort="avg">Average Score <i class="fas fa-sort"></i></th>
+                        <th data-sort="0">Object Understanding <i class="fas fa-sort"></i></th>
+                        <th data-sort="1">Spatial Intelligence <i class="fas fa-sort"></i></th>
+                        <th data-sort="2">Social Activity <i class="fas fa-sort"></i></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 表格内容将通过JavaScript动态生成 -->
+                    <!-- Table content will be dynamically generated by JavaScript -->
                 </tbody>
             </table>
         </section>
         
-        <!-- 发展阶段对照榜内容 -->
-        <section class="section hidden" id="stage-view">
-            <h2>发展阶段对照榜</h2>
-            <p>将模型的三个维度得分映射到三维空间，并与儿童发展阶段（0-6岁）进行对照。</p>
-            
-            <!-- 重新布局：将三维可视化图形和说明面板并排显示 -->
-            <div class="stage-chart-wrapper">
-                <div id="stage-chart-container"></div>
-                <div id="stage-chart-info">
-                    <h3>发展阶段说明</h3>
-                    <p>每个球面代表不同的发展阶段：</p>
-                    <ul>
-                        <li><span class="age-sphere" style="background-color: #FF6B6B;"></span> 0-1岁：感知运动阶段（早期至中期）</li>
-                        <li><span class="age-sphere" style="background-color: #f28f0c;"></span> 1-2岁：感知运动阶段（晚期至结束）</li>
-                        <li><span class="age-sphere" style="background-color: #f5f106;"></span> 2-3岁：前运算阶段（早期：符号功能期）</li>
-                        <li><span class="age-sphere" style="background-color: #06D6A0;"></span> 3-4岁：前运算阶段（符号功能期至直觉期过渡）</li>
-                        <li><span class="age-sphere" style="background-color: #118AB2;"></span> 4-5岁：前运算阶段（中期：直觉思维期）</li>
-                        <li><span class="age-sphere" style="background-color: #073B4C;"></span> 5-6岁：前运算阶段（早期：直觉期末端）</li>
-                    </ul>
-                    <p>每个点代表一个模型，其位置由三个维度得分决定。</p>
-                    <div class="stage-controls">
-                        <button id="resetView">重置视角</button>
-                        <button id="toggleSpheres">切换球面显示</button>
-                    </div>
-                </div>
-            </div>
-            
-            <h3>模型发展年龄对照表</h3>
-            <table id="stageTable">
-                <thead>
-                    <tr>
-                        <th data-sort="name">模型 <i class="fas fa-sort"></i></th>
-                        <th data-sort="avgAge">综合发展年龄 <i class="fas fa-sort"></i></th>
-                        <th data-sort="0">物体理解年龄 <i class="fas fa-sort"></i></th>
-                        <th data-sort="1">空间智能年龄 <i class="fas fa-sort"></i></th>
-                        <th data-sort="2">社会活动年龄 <i class="fas fa-sort"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 表格内容将通过JavaScript动态生成 -->
-                </tbody>
-            </table>
-        </section>
-        
-        <!-- 关于我们视图内容 -->
+        <!-- About Us View Content -->
         <section class="section hidden" id="about-view">
-            <h2>关于我们</h2>
-            <p>TongTest-通用具身交互测试平台致力于为研究者和开发者提供全面、客观的AI模型评估数据。</p>
+            <h2>About Us</h2>
+            <p>TongTest - General Embodied Interaction Testing Platform is committed to providing comprehensive and objective AI model evaluation data for researchers and developers.</p>
             
-            <h3>我们的使命</h3>
-            <p>通过系统化的测试和评估，推动多模态大模型技术的发展和应用。</p>
+            <h3>Our Mission</h3>
+            <p>Promote the development and application of multimodal large model technology through systematic testing and evaluation.</p>
             
-            <h3>测试方法</h3>
-            <p>我们采用标准化的测试流程和评估指标，确保测试结果的可靠性和可比性。</p>
+            <h3>Testing Methodology</h3>
+            <p>We adopt standardized testing processes and evaluation metrics to ensure the reliability and comparability of test results.</p>
             
-            <h3>联系我们</h3>
-            <p>如有任何问题或建议，请通过邮箱 research@bigai.ai 与我们联系。</p>
+            <h3>Contact Us</h3>
+            <p>If you have any questions or suggestions, please contact us at research@bigai.ai.</p>
         </section>
     </main>
     
     <footer>
-        <p>TongTest测试结果发布平台 &copy; 2025 - 专注于AI智能体能力评估与比较</p>
+        <p>TongTest Test Results Release Platform &copy; 2025 - Focused on AI Agent Capability Evaluation and Comparison</p>
     </footer>
 
     <script>
-        // 测试数据 - 17个模型在8项任务上的得分
+        // Test data - 17 models' scores on 8 tasks
         const modelData = [
             { name: "Gemini-Pro-2.5", scores: [48.00, 12.38, 10.00, 15.00, 0.00, 26.68, 22.77, 68.06], avg: 25.36 },
             { name: "OpenAI o3", scores: [54.00, 10.30, 10.00, 17.38, 8.33, 14.31, 18.77, 65.92], avg: 24.88 },
@@ -755,47 +626,34 @@
             { name: "Llama-3.1-90B-Vision-Instruct", scores: [6.00, 0.00, 0.00, 15.90, 0.00, 4.67, 0.42, 6.80], avg: 4.22 }
         ];
 
-        // 任务名称（保持不变）
-        const tasks = ["物品计数", "准备行李", "搭建积木", "智慧拼图", "理解按钮", "整理桌面", "打扫房间", "挑选礼物"];
+        // Task names
+        const tasks = ["Object Counting", "Packing Luggage", "Building Blocks", "Smart Puzzle", "Understanding Buttons", "Tidying Desk", "Cleaning Room", "Choosing Gifts"];
 
-        // 维度定义（保持不变）
-        const dimensions = ["物体理解", "空间智能", "社会活动"];
+        // Dimension definitions
+        const dimensions = ["Object Understanding", "Spatial Intelligence", "Social Activity"];
 
-        // 计算每个模型在三个维度上的得分（根据新数据更新计算逻辑）
+        // Calculate each model's scores across three dimensions
         const dimensionData = modelData.map(model => {
-            // 物体理解维度：物品计数(0)和挑选礼物(7)的平均分
+            // Object Understanding Dimension: Average of Object Counting(0) and Choosing Gifts(7)
             const objectUnderstanding = (model.scores[0] + model.scores[7]) / 2;
             
-            // 空间智能维度：搭建积木(2)、智慧拼图(3)、理解按钮(4)的平均分
+            // Spatial Intelligence Dimension: Average of Building Blocks(2), Smart Puzzle(3), Understanding Buttons(4)
             const spatialIntelligence = (model.scores[2] + model.scores[3] + model.scores[4]) / 3;
             
-            // 社会活动维度：准备行李(1)、整理桌面(5)、打扫房间(6)的平均分
+            // Social Activity Dimension: Average of Packing Luggage(1), Tidying Desk(5), Cleaning Room(6)
             const socialActivity = (model.scores[1] + model.scores[5] + model.scores[6]) / 3;
             
-            // 维度平均分
+            // Dimension average score
             const dimensionAvg = (objectUnderstanding + spatialIntelligence + socialActivity) / 3;
-            
-            // 计算发展年龄
-            // const avgAge = (dimensionAvg / 100) * 6;  
-            // const objectAge = (objectUnderstanding / 100) * 6;
-            // const spatialAge = (spatialIntelligence / 100) * 6;
-            // const socialAge = (socialActivity / 100) * 6;
-
-            const avgAge = (2/(1+Math.exp(-0.05*dimensionAvg))- 1) * 6;  
-            const objectAge = (2/(1+Math.exp(-0.05*objectUnderstanding))- 1) * 6;  
-            const spatialAge = (2/(1+Math.exp(-0.05*spatialIntelligence))- 1) * 6;  
-            const socialAge = (2/(1+Math.exp(-0.05*socialActivity))- 1) * 6;  
             
             return {
                 name: model.name,
                 scores: [objectUnderstanding, spatialIntelligence, socialActivity],
-                ages: [objectAge, spatialAge, socialAge],
-                avg: dimensionAvg,
-                avgAge: avgAge
+                avg: dimensionAvg
             };
         });
         
-        // 颜色数组用于雷达图
+        // Color array for radar chart
         const colors = [
             'rgba(54, 162, 235, 1)',
             'rgba(255, 99, 132, 1)',
@@ -816,39 +674,35 @@
             'rgba(200, 200, 100, 1)'
         ];
         
-        // 初始化模型选择状态 - 现在使用同一个状态数组
+        // Initialize model selection state
         let selectedModels = Array(modelData.length).fill(true);
         
-        // 当前视图状态
+        // Current view state
         let currentView = 'ability';
         
-        // 当前排序状态
+        // Current sort state
         let currentSort = {
             column: 'avg',
             direction: 'desc'
         };
 
-        // 三维场景相关变量
-        let scene, camera, renderer, controls;
-        let spheresVisible = true;
-
-        // 初始化表格
+        // Initialize table
         function initTable() {
             const tbody = document.querySelector('#resultsTable tbody');
             tbody.innerHTML = '';
             
-            // 排序数据
+            // Sort data
             const sortedData = sortModelData(modelData, currentSort.column, currentSort.direction);
             
             sortedData.forEach((model, index) => {
                 const row = document.createElement('tr');
                 
-                // 模型名称
+                // Model name
                 const nameCell = document.createElement('td');
                 const nameDiv = document.createElement('div');
                 nameDiv.className = 'model-name';
                 
-                // 为前三名添加奖牌
+                // Add medals for top three
                 if (index < 3) {
                     const medal = document.createElement('i');
                     if (index === 0) {
@@ -865,13 +719,13 @@
                 nameCell.appendChild(nameDiv);
                 row.appendChild(nameCell);
                 
-                // 平均分
+                // Average score
                 const avgCell = document.createElement('td');
                 avgCell.textContent = model.avg.toFixed(1);
                 avgCell.className = 'score-cell';
                 row.appendChild(avgCell);
                 
-                // 各项任务得分
+                // Task scores
                 model.scores.forEach(score => {
                     const scoreCell = document.createElement('td');
                     scoreCell.textContent = score;
@@ -883,23 +737,23 @@
             });
         }
         
-        // 初始化维度表格
+        // Initialize dimension table
         function initDimensionTable() {
             const tbody = document.querySelector('#dimensionResultsTable tbody');
             tbody.innerHTML = '';
             
-            // 排序数据
+            // Sort data
             const sortedData = sortModelData(dimensionData, currentSort.column, currentSort.direction);
             
             sortedData.forEach((model, index) => {
                 const row = document.createElement('tr');
                 
-                // 模型名称
+                // Model name
                 const nameCell = document.createElement('td');
                 const nameDiv = document.createElement('div');
                 nameDiv.className = 'model-name';
                 
-                // 为前三名添加奖牌
+                // Add medals for top three
                 if (index < 3) {
                     const medal = document.createElement('i');
                     if (index === 0) {
@@ -916,13 +770,13 @@
                 nameCell.appendChild(nameDiv);
                 row.appendChild(nameCell);
                 
-                // 平均分
+                // Average score
                 const avgCell = document.createElement('td');
                 avgCell.textContent = model.avg.toFixed(1);
                 avgCell.className = 'score-cell';
                 row.appendChild(avgCell);
                 
-                // 各项维度得分
+                // Dimension scores
                 model.scores.forEach(score => {
                     const scoreCell = document.createElement('td');
                     scoreCell.textContent = score.toFixed(1);
@@ -934,41 +788,7 @@
             });
         }
         
-        // 初始化发展阶段对照表
-        function initStageTable() {
-            const tbody = document.querySelector('#stageTable tbody');
-            tbody.innerHTML = '';
-            
-            // 按当前排序排序数据
-            const sortedData = sortStageData(dimensionData, currentSort.column, currentSort.direction);
-            
-            sortedData.forEach((model, index) => {
-                const row = document.createElement('tr');
-                
-                // 模型名称
-                const nameCell = document.createElement('td');
-                nameCell.textContent = model.name;
-                row.appendChild(nameCell);
-                
-                // 综合发展年龄
-                const avgAgeCell = document.createElement('td');
-                avgAgeCell.textContent = model.avgAge.toFixed(1) + " 岁";
-                avgAgeCell.className = 'score-cell';
-                row.appendChild(avgAgeCell);
-                
-                // 各项维度年龄
-                model.ages.forEach(age => {
-                    const ageCell = document.createElement('td');
-                    ageCell.textContent = age.toFixed(1) + " 岁";
-                    ageCell.className = 'score-cell';
-                    row.appendChild(ageCell);
-                });
-                
-                tbody.appendChild(row);
-            });
-        }
-        
-        // 排序函数
+        // Sort function
         function sortModelData(data, column, direction) {
             return [...data].sort((a, b) => {
                 let aValue, bValue;
@@ -992,31 +812,7 @@
             });
         }
         
-        // 发展阶段表格排序函数
-        function sortStageData(data, column, direction) {
-            return [...data].sort((a, b) => {
-                let aValue, bValue;
-                
-                if (column === 'name') {
-                    aValue = a.name;
-                    bValue = b.name;
-                } else if (column === 'avgAge') {
-                    aValue = a.avgAge;
-                    bValue = b.avgAge;
-                } else {
-                    aValue = a.ages[parseInt(column)];
-                    bValue = b.ages[parseInt(column)];
-                }
-                
-                if (direction === 'asc') {
-                    return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
-                } else {
-                    return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
-                }
-            });
-        }
-        
-        // 更新排序图标
+        // Update sort icons
         function updateSortIcons(tableId, sortColumn, sortDirection) {
             const ths = document.querySelectorAll(`#${tableId} th`);
             ths.forEach(th => {
@@ -1029,7 +825,7 @@
             });
         }
         
-        // 初始化模型选择器
+        // Initialize model selectors
         function initModelSelectors() {
             const container = document.getElementById('modelSelectors');
             container.innerHTML = '';
@@ -1055,7 +851,7 @@
             });
         }
         
-        // 初始化维度模型选择器
+        // Initialize dimension model selectors
         function initDimensionModelSelectors() {
             const container = document.getElementById('dimensionModelSelectors');
             container.innerHTML = '';
@@ -1081,21 +877,21 @@
             });
         }
         
-        // 更新模型选择器状态（用于视图切换时同步状态）
+        // Update model selectors state (for view switching synchronization)
         function updateModelSelectors() {
             document.querySelectorAll('#modelSelectors input[type="checkbox"]').forEach((checkbox, index) => {
                 checkbox.checked = selectedModels[index];
             });
         }
         
-        // 更新维度模型选择器状态（用于视图切换时同步状态）
+        // Update dimension model selectors state (for view switching synchronization)
         function updateDimensionModelSelectors() {
             document.querySelectorAll('#dimensionModelSelectors input[type="checkbox"]').forEach((checkbox, index) => {
                 checkbox.checked = selectedModels[index];
             });
         }
         
-        // 初始化雷达图
+        // Initialize radar chart
         let radarChart;
         function initRadarChart() {
             const ctx = document.getElementById('radarChart').getContext('2d');
@@ -1103,7 +899,7 @@
             const datasets = modelData.map((model, index) => ({
                 label: model.name,
                 data: model.scores,
-                backgroundColor: 'rgba(0, 0, 0, 0)', // 透明背景
+                backgroundColor: 'rgba(0, 0, 0, 0)', // Transparent background
                 borderColor: colors[index],
                 borderWidth: 2,
                 pointBackgroundColor: colors[index],
@@ -1144,7 +940,7 @@
             });
         }
         
-        // 初始化维度雷达图
+        // Initialize dimension radar chart
         let dimensionRadarChart;
         function initDimensionRadarChart() {
             const ctx = document.getElementById('dimensionRadarChart').getContext('2d');
@@ -1152,7 +948,7 @@
             const datasets = dimensionData.map((model, index) => ({
                 label: model.name,
                 data: model.scores,
-                backgroundColor: 'rgba(0, 0, 0, 0)', // 透明背景
+                backgroundColor: 'rgba(0, 0, 0, 0)', // Transparent background
                 borderColor: colors[index],
                 borderWidth: 2,
                 pointBackgroundColor: colors[index],
@@ -1193,7 +989,7 @@
             });
         }
         
-        // 更新雷达图
+        // Update radar chart
         function updateRadarChart() {
             radarChart.data.datasets.forEach((dataset, index) => {
                 dataset.hidden = !selectedModels[index];
@@ -1201,7 +997,7 @@
             radarChart.update();
         }
         
-        // 更新维度雷达图
+        // Update dimension radar chart
         function updateDimensionRadarChart() {
             dimensionRadarChart.data.datasets.forEach((dataset, index) => {
                 dataset.hidden = !selectedModels[index];
@@ -1209,381 +1005,40 @@
             dimensionRadarChart.update();
         }
         
-        // 初始化三维场景
-        function initStageChart() {
-            const container = document.getElementById('stage-chart-container');
-            
-            // 创建场景
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xf5f7fa);
-            
-            // 创建相机
-            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(100, 100, 100);
-            
-            // 创建渲染器
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            container.appendChild(renderer.domElement);
-            
-            // 添加轨道控制器
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.05;
-            
-            // 添加坐标轴
-            const axesHelper = new THREE.AxesHelper(120);
-            scene.add(axesHelper);
-            
-            // 添加坐标轴标签和刻度
-            addAxisLabelsAndTicks();
-            
-            // 添加发展阶段球面
-            addDevelopmentSpheres();
-            
-            // 添加模型点
-            addModelPoints();
-            
-            // 添加光源
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-            scene.add(ambientLight);
-            
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight.position.set(50, 50, 50);
-            scene.add(directionalLight);
-            
-            // 动画循环
-            function animate() {
-                requestAnimationFrame(animate);
-                controls.update();
-                renderer.render(scene, camera);
-            }
-            animate();
-            
-            // 窗口大小变化时调整渲染器
-            window.addEventListener('resize', function() {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
-            });
-
-
-            const raycaster = new THREE.Raycaster();
-            const mouse = new THREE.Vector2();
-            const infoPanel = document.getElementById('infoPanel');
-
-            renderer.domElement.addEventListener('click', (event) => {
-                // 计算鼠标位置 (标准化设备坐标 -1 到 1)
-                const rect = renderer.domElement.getBoundingClientRect();
-                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
-                // 射线检测
-                raycaster.setFromCamera(mouse, camera);
-                const intersects = raycaster.intersectObjects(spheres);
-
-                if (intersects.length > 0) {
-                    const sphere = intersects[0].object;
-                    const { x, y, z } = sphere.userData.coords;
-
-                    // 显示浮动面板
-                    infoPanel.style.display = 'block';
-                    infoPanel.style.left = event.pageX + 10 + 'px';
-                    infoPanel.style.top = event.pageY + 10 + 'px';
-                    infoPanel.innerHTML = `
-                        <strong>${sphere.userData.name}</strong><br>
-                        物体理解: ${(x/20).toFixed(1)}, 空间智能: ${(y/20).toFixed(1)}, 社会活动: ${(z/20).toFixed(1)}
-                    `;
-                } else {
-                    // 点到空白处隐藏面板
-                    infoPanel.style.display = 'none';
-                }
-            });
-
-        }
-        
-        // 添加坐标轴标签和刻度
-        function addAxisLabelsAndTicks() {
-            // 物体理解轴标签和刻度
-            addAxisWithTicks("物体理解", new THREE.Vector3(1, 0, 0), 130);
-            
-            // 空间智能轴标签和刻度
-            addAxisWithTicks("空间智能", new THREE.Vector3(0, 1, 0), 130);
-            
-            // 社会活动轴标签和刻度
-            addAxisWithTicks("社会活动", new THREE.Vector3(0, 0, 1), 130);
-        }
-        
-        // 为单个坐标轴添加标签和刻度
-        function addAxisWithTicks(label, direction, length) {
-            // 添加主标签
-            const mainLabel = createTextSprite(label);
-            mainLabel.position.copy(direction.clone().multiplyScalar(length + 15));
-            scene.add(mainLabel);
-            
-            // 添加刻度线
-            for (let i = 0; i <= 120; i += 20) {
-                // 添加刻度线
-                const tickGeometry = new THREE.BoxGeometry(1, 1, 1);
-                const tickMaterial = new THREE.MeshBasicMaterial({ color: 0x333333 });
-                const tick = new THREE.Mesh(tickGeometry, tickMaterial);
-                
-                // 根据方向设置刻度位置
-                if (direction.x !== 0) {
-                    tick.position.set(i, 0, 0);
-                    tick.scale.set(0.5, 1, 1);
-                } else if (direction.y !== 0) {
-                    tick.position.set(0, i, 0);
-                    tick.scale.set(1, 0.5, 1);
-                } else {
-                    tick.position.set(0, 0, i);
-                    tick.scale.set(1, 1, 0.5);
-                }
-                
-                scene.add(tick);
-                
-                // 添加刻度标签（年龄）
-                const age = (i / 120) * 6;
-                const tickLabel = createTickLabel(age.toFixed(1) + "岁");
-                
-                // 根据方向设置标签位置
-                if (direction.x !== 0) {
-                    tickLabel.position.set(i, -3, -3);
-                } else if (direction.y !== 0) {
-                    tickLabel.position.set(-3, i, -3);
-                } else {
-                    tickLabel.position.set(-3, -3, i);
-                }
-                
-                scene.add(tickLabel);
-            }
-        }
-        
-        // 创建文本精灵
-        function createTextSprite(text) {
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.width = 256;
-            canvas.height = 128;
-
-            context.fillStyle = 'rgba(255, 255, 255, 0.0)'; // 白色背景 + 60% 透明度
-            context.fillRect(0, 0, canvas.width, canvas.height);
-            
-            context.fillStyle = '#1a73e8';
-            context.font = 'bold 48px Arial';
-            context.textAlign = 'center';
-            context.textBaseline = 'middle';
-            context.fillText(text, canvas.width / 2, canvas.height / 2);
-            
-            const texture = new THREE.CanvasTexture(canvas);
-            const material = new THREE.SpriteMaterial({ map: texture, transparent:true, depthTest:false, depthWrite:false });
-            const sprite = new THREE.Sprite(material);
-            sprite.renderOrder = 999;
-            sprite.scale.set(30, 15, 1);
-            
-            return sprite;
-        }
-        
-        // 创建刻度标签
-        function createTickLabel(text) {
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.width = 128;
-            canvas.height = 64;
-
-            context.fillStyle = 'rgba(255, 255, 255, 0.0)'; // 白色背景 + 60% 透明度
-            context.fillRect(0, 0, canvas.width, canvas.height);
-            
-            context.fillStyle = '#333';
-            context.font = '20px Arial';
-            context.textAlign = 'center';
-            context.textBaseline = 'middle';
-            context.fillText(text, canvas.width / 2, canvas.height / 2);
-            
-            const texture = new THREE.CanvasTexture(canvas);
-            const material = new THREE.SpriteMaterial({ map: texture, transparent:true, depthTest:false, depthWrite:false });
-            const sprite = new THREE.Sprite(material);
-            sprite.renderOrder = 999;
-            sprite.scale.set(10, 5, 1);
-            
-            return sprite;
-        }
-        
-
-        // 添加发展阶段球面
-        function addDevelopmentSpheres() {
-            const ageSpheres = [
-                { age: 1, color: 0xFF6B6B, radius: 20, description: "感知运动阶段（早期至中期）" },   // 0-1岁
-                { age: 2, color: 0xf28f0c, radius: 40, description: "感知运动阶段（晚期至结束）" }, // 1-2岁
-                { age: 3, color: 0xf5f106, radius: 60, description: "前运算阶段（早期：符号功能期）" },     // 2-3岁
-                { age: 4, color: 0x06D6A0, radius: 80, description: "前运算阶段（符号功能期至直觉期过渡）" }, // 3-4岁
-                { age: 5, color: 0x118AB2, radius: 100, description: "前运算阶段（直觉思维期）" },  // 4-5岁
-                { age: 6, color: 0x073B4C, radius: 120, description: "前运算阶段（直觉期末端）" } // 5-6岁
-            ];
-            
-            ageSpheres.forEach(sphere => {
-                const geometry = new THREE.SphereGeometry(sphere.radius, 32, 32);
-                const material = new THREE.MeshBasicMaterial({ 
-                    color: sphere.color, 
-                    transparent: true, 
-                    opacity: 0.1,
-                    wireframe: true
-                });
-                const mesh = new THREE.Mesh(geometry, material);
-                scene.add(mesh);
-                
-                // 添加年龄标签
-                // const ageLabel = createAgeLabel(sphere.age + "岁 - " + sphere.description);
-                // ageLabel.position.set(sphere.radius + 8, 0, 0);
-                // scene.add(ageLabel);
-            });
-        }
-        
-        // 创建年龄标签
-        function createAgeLabel(text) {
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.width = 256;
-            canvas.height = 64;
-
-            context.fillStyle = 'rgba(255, 255, 255, 0.0)'; // 白色背景 + 60% 透明度
-            context.fillRect(0, 0, canvas.width, canvas.height);
-            
-            context.fillStyle = '#333';
-            context.font = '20px Arial';
-            context.textAlign = 'left';
-            context.textBaseline = 'middle';
-            context.fillText(text, 10, canvas.height / 2);
-            
-            const texture = new THREE.CanvasTexture(canvas);
-            const material = new THREE.SpriteMaterial({ map: texture, transparent:true, depthTest:false, depthWrite:false });
-            const sprite = new THREE.Sprite(material);
-            sprite.renderOrder = 999;
-            sprite.scale.set(25, 6, 1);
-            
-            return sprite;
-        }
-        
-        // 添加模型点
-        const spheres = []; // 全局数组，存放所有点
-        function addModelPoints() {
-            dimensionData.forEach((model, index) => {
-                // 将得分转换为三维坐标 (0-100分对应0-100单位)
-                const x = model.scores[0]/100*120; // 物体理解
-                const y = model.scores[1]/100*120; // 空间智能
-                const z = model.scores[2]/100*120; // 社会活动
-
-                // 计算点到原点的距离
-                const distance = Math.sqrt(x * x + y * y + z * z);
-                const maxDistance = 60 * Math.sqrt(3);  // 三轴最大值时的对角线距离
-
-                // 归一化 (0 = 原点, 1 = 最远)
-                const t = distance / maxDistance;
-
-                // 插值颜色: 近 = 红色, 远 = 蓝灰色
-                const r = Math.round(255 * (1 - t));          // 距离近 → 红色分量高
-                const g = Math.round(50 + 100 * t);           // 随距离增加，绿色略增
-                const b = Math.round(50 + 200 * t);           // 距离远 → 蓝色分量高
-                const color = new THREE.Color(`rgb(${r},${g},${b})`);
-
-                
-                // 创建球体表示模型
-                const geometry = new THREE.SphereGeometry(1, 16, 16);
-                const material = new THREE.MeshBasicMaterial({ 
-                    color: color,
-                    transparent: true,
-                    opacity: 0.95
-                });
-                const sphere = new THREE.Mesh(geometry, material);
-                sphere.position.set(x, y, z);
-
-                // 保存信息，后面点选时可以用
-                sphere.userData = {
-                    name: model.name,
-                    coords: { x: x.toFixed(2), y: y.toFixed(2), z: z.toFixed(2) }
-                };
-
-                scene.add(sphere);
-                spheres.push(sphere);
-                
-                // 添加模型名称标签
-                const label = createModelLabel(model.name);
-                label.position.set(x , y-2, z);
-                scene.add(label);
-            });
-        }
-        
-        // 创建模型标签
-        function createModelLabel(text) {
-            const scaleFactor = 4;  // 分辨率放大倍数
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            canvas.width = 192 * scaleFactor;
-            canvas.height = 32 * scaleFactor;
-
-            context.fillStyle = 'rgba(255, 255, 255, 0.0)'; // 白色背景 + 60% 透明度
-            context.fillRect(0, 0, canvas.width, canvas.height);
-            
-            context.fillStyle = '#333';
-            context.font = 'bold 40px Arial';
-            context.textAlign = 'center';
-            context.textBaseline = 'middle';
-            context.fillText(text, 96*scaleFactor, canvas.height / 2);
-            
-            const texture = new THREE.CanvasTexture(canvas);
-            texture.anisotropy = 16;   // 提升采样质量
-            texture.needsUpdate = true;
-            const material = new THREE.SpriteMaterial({ map: texture, transparent:true, depthTest:false, depthWrite:false });
-            const sprite = new THREE.Sprite(material);
-            sprite.renderOrder = 999;
-            sprite.scale.set(20, 6, 1);
-            
-            return sprite;
-        }
-        
-        // 切换视图
+        // Switch view
         function switchView(view) {
-            // 更新当前视图状态
+            // Update current view state
             currentView = view;
             
-            // 隐藏所有视图
+            // Hide all views
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.add('hidden');
             });
             
-            // 显示选中的视图
+            // Show selected view
             if (view === 'ability') {
                 document.getElementById('ability-view').classList.remove('hidden');
                 document.getElementById('ability-results').classList.remove('hidden');
-                // 同步模型选择器状态
+                // Synchronize model selector state
                 updateModelSelectors();
-                // 更新雷达图
+                // Update radar chart
                 updateRadarChart();
-                // 更新排序图标
+                // Update sort icons
                 updateSortIcons('resultsTable', currentSort.column, currentSort.direction);
             } else if (view === 'dimension') {
                 document.getElementById('dimension-view').classList.remove('hidden');
                 document.getElementById('dimension-results').classList.remove('hidden');
-                // 同步模型选择器状态
+                // Synchronize model selector state
                 updateDimensionModelSelectors();
-                // 更新雷达图
+                // Update radar chart
                 updateDimensionRadarChart();
-                // 更新排序图标
+                // Update sort icons
                 updateSortIcons('dimensionResultsTable', currentSort.column, currentSort.direction);
-            } else if (view === 'stage') {
-                document.getElementById('stage-view').classList.remove('hidden');
-                initStageTable();
-                // 更新排序图标
-                updateSortIcons('stageTable', currentSort.column, currentSort.direction);
-                // 初始化三维场景
-                if (!scene) {
-                    initStageChart();
-                }
             } else if (view === 'about') {
                 document.getElementById('about-view').classList.remove('hidden');
             }
             
-            // 更新导航栏活动状态
+            // Update navigation active state
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
                 if (link.dataset.view === view) {
@@ -1591,7 +1046,7 @@
                 }
             });
             
-            // 更新视图切换器活动状态
+            // Update view switcher active state
             document.querySelectorAll('.view-option').forEach(option => {
                 option.classList.remove('active');
                 if (option.dataset.view === view) {
@@ -1600,33 +1055,33 @@
             });
         }
         
-        // 全选/取消全选功能
+        // Select All/Deselect All functionality
         document.getElementById('selectAllBtn').addEventListener('click', function() {
             const allSelected = selectedModels.every(val => val);
             
             selectedModels = selectedModels.map(() => !allSelected);
             
-            // 更新复选框状态
+            // Update checkbox state
             updateModelSelectors();
             
-            // 更新雷达图
+            // Update radar chart
             updateRadarChart();
         });
         
-        // 维度视图全选/取消全选功能
+        // Dimension view Select All/Deselect All functionality
         document.getElementById('dimensionSelectAllBtn').addEventListener('click', function() {
             const allSelected = selectedModels.every(val => val);
             
             selectedModels = selectedModels.map(() => !allSelected);
             
-            // 更新复选框状态
+            // Update checkbox state
             updateDimensionModelSelectors();
             
-            // 更新雷达图
+            // Update radar chart
             updateDimensionRadarChart();
         });
         
-        // 视图切换功能
+        // View switching functionality
         document.querySelectorAll('.view-option').forEach(option => {
             option.addEventListener('click', function() {
                 const view = this.dataset.view;
@@ -1634,7 +1089,7 @@
             });
         });
         
-        // 导航菜单交互
+        // Navigation menu interaction
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1643,9 +1098,9 @@
             });
         });
         
-        // 表格排序功能
+        // Table sorting functionality
         function initTableSorting() {
-            // 能力视图表格排序
+            // Ability view table sorting
             document.querySelectorAll('#resultsTable th[data-sort]').forEach(th => {
                 th.addEventListener('click', function() {
                     const column = this.dataset.sort;
@@ -1661,7 +1116,7 @@
                 });
             });
             
-            // 维度视图表格排序
+            // Dimension view table sorting
             document.querySelectorAll('#dimensionResultsTable th[data-sort]').forEach(th => {
                 th.addEventListener('click', function() {
                     const column = this.dataset.sort;
@@ -1676,25 +1131,9 @@
                     initDimensionTable();
                 });
             });
-            
-            // 发展阶段对照表排序
-            document.querySelectorAll('#stageTable th[data-sort]').forEach(th => {
-                th.addEventListener('click', function() {
-                    const column = this.dataset.sort;
-                    let direction = 'desc';
-                    
-                    if (currentSort.column === column) {
-                        direction = currentSort.direction === 'desc' ? 'asc' : 'desc';
-                    }
-                    
-                    currentSort = { column, direction };
-                    updateSortIcons('stageTable', column, direction);
-                    initStageTable();
-                });
-            });
         }
         
-        // 初始化页面
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             initTable();
             initDimensionTable();
@@ -1704,26 +1143,10 @@
             initDimensionRadarChart();
             initTableSorting();
             
-            // 三维场景控制
-            document.getElementById('resetView').addEventListener('click', function() {
-                if (controls) {
-                    controls.reset();
-                }
-            });
-            
-            document.getElementById('toggleSpheres').addEventListener('click', function() {
-                // 切换球面显示/隐藏
-                spheresVisible = !spheresVisible;
-                scene.traverse(function(child) {
-                    if (child instanceof THREE.Mesh && child.material.wireframe) {
-                        child.visible = spheresVisible;
-                    }
-                });
-            });
-            
-            // 默认显示能力视图
+            // Default to ability view
             switchView('ability');
         });
     </script>
 </body>
 </html>
+[file content end]
