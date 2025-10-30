@@ -897,7 +897,7 @@
             const datasets = modelData.map((model, index) => ({
                 label: model.name,
                 data: model.scores,
-                backgroundColor: 'rgba(0, 0, 0, 0)', // Transparent background
+                backgroundColor: 'rgba(0, 0, 0, 0)',
                 borderColor: colors[index],
                 borderWidth: 2,
                 pointBackgroundColor: colors[index],
@@ -928,6 +928,22 @@
                     plugins: {
                         legend: {
                             position: 'top',
+                            onClick: function(evt, legendItem, legend) {
+                                // 获取点击的图例索引
+                                const index = legendItem.datasetIndex;
+                                
+                                // 切换选中状态
+                                selectedModels[index] = !selectedModels[index];
+                                
+                                // 更新复选框状态
+                                updateModelSelectors();
+                                
+                                // 手动更新数据集的隐藏状态，确保与 selectedModels 同步
+                                this.chart.data.datasets[index].hidden = !selectedModels[index];
+                                
+                                // 更新图表
+                                this.chart.update();
+                            }
                         },
                         tooltip: {
                             mode: 'index',
@@ -946,7 +962,7 @@
             const datasets = dimensionData.map((model, index) => ({
                 label: model.name,
                 data: model.scores,
-                backgroundColor: 'rgba(0, 0, 0, 0)', // Transparent background
+                backgroundColor: 'rgba(0, 0, 0, 0)',
                 borderColor: colors[index],
                 borderWidth: 2,
                 pointBackgroundColor: colors[index],
@@ -977,6 +993,22 @@
                     plugins: {
                         legend: {
                             position: 'top',
+                            onClick: function(evt, legendItem, legend) {
+                                // 获取点击的图例索引
+                                const index = legendItem.datasetIndex;
+                                
+                                // 切换选中状态
+                                selectedModels[index] = !selectedModels[index];
+                                
+                                // 更新复选框状态
+                                updateDimensionModelSelectors();
+                                
+                                // 手动更新数据集的隐藏状态，确保与 selectedModels 同步
+                                this.chart.data.datasets[index].hidden = !selectedModels[index];
+                                
+                                // 更新图表
+                                this.chart.update();
+                            }
                         },
                         tooltip: {
                             mode: 'index',
@@ -989,6 +1021,7 @@
         
         // Update radar chart
         function updateRadarChart() {
+            // 确保数据集的隐藏状态与 selectedModels 同步
             radarChart.data.datasets.forEach((dataset, index) => {
                 dataset.hidden = !selectedModels[index];
             });
@@ -997,6 +1030,7 @@
         
         // Update dimension radar chart
         function updateDimensionRadarChart() {
+            // 确保数据集的隐藏状态与 selectedModels 同步
             dimensionRadarChart.data.datasets.forEach((dataset, index) => {
                 dataset.hidden = !selectedModels[index];
             });
