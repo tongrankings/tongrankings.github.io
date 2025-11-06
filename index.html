@@ -448,11 +448,11 @@
             
             <div class="tasks-grid">
                 <div class="task-card">
-                    <h4>Object Counting</h4>
+                    <h4>Counting Objects</h4>
                     <p>Evaluate the model's ability to identify and count specific objects in a scene.</p>
                 </div>
                 <div class="task-card">
-                    <h4>Packing Luggage</h4>
+                    <h4>Preparing Baggage</h4>
                     <p>Test the model's ability to select and organize appropriate items based on travel needs.</p>
                 </div>
                 <div class="task-card">
@@ -460,7 +460,7 @@
                     <p>Evaluate the model's spatial reasoning and operational ability to understand and execute block building instructions.</p>
                 </div>
                 <div class="task-card">
-                    <h4>Smart Puzzle</h4>
+                    <h4>Jigsaw Puzzle</h4>
                     <p>Test the model's visual reasoning ability to recognize patterns and complete puzzle tasks.</p>
                 </div>
                 <div class="task-card">
@@ -468,15 +468,15 @@
                     <p>Evaluate the model's ability to identify button functions and predict operation results.</p>
                 </div>
                 <div class="task-card">
-                    <h4>Tidying Desk</h4>
+                    <h4>Setting Tables</h4>
                     <p>Test the model's ability to arrange items reasonably based on categories and spatial relationships.</p>
                 </div>
                 <div class="task-card">
-                    <h4>Cleaning Room</h4>
+                    <h4>Tidying Up Rooms</h4>
                     <p>Evaluate the model's ability to plan cleaning tasks and execute reasonable operation sequences.</p>
                 </div>
                 <div class="task-card">
-                    <h4>Choosing Gifts</h4>
+                    <h4>Selecting Gifts</h4>
                     <p>Test the model's ability to select appropriate gifts based on personal relationships and scenario requirements.</p>
                 </div>
             </div>
@@ -501,14 +501,14 @@
                     <tr>
                         <th data-sort="name">Model <i class="fas fa-sort"></i></th>
                         <th data-sort="avg">Average Score <i class="fas fa-sort"></i></th>
-                        <th data-sort="0">Object Counting <i class="fas fa-sort"></i></th>
-                        <th data-sort="1">Packing Luggage <i class="fas fa-sort"></i></th>
+                        <th data-sort="0">Counting Objects <i class="fas fa-sort"></i></th>
+                        <th data-sort="1">Preparing Baggage <i class="fas fa-sort"></i></th>
                         <th data-sort="2">Building Blocks <i class="fas fa-sort"></i></th>
-                        <th data-sort="3">Smart Puzzle <i class="fas fa-sort"></i></th>
+                        <th data-sort="3">Jigsaw Puzzle <i class="fas fa-sort"></i></th>
                         <th data-sort="4">Understanding Buttons <i class="fas fa-sort"></i></th>
-                        <th data-sort="5">Tidying Desk <i class="fas fa-sort"></i></th>
-                        <th data-sort="6">Cleaning Room <i class="fas fa-sort"></i></th>
-                        <th data-sort="7">Choosing Gifts <i class="fas fa-sort"></i></th>
+                        <th data-sort="5">Setting Tables <i class="fas fa-sort"></i></th>
+                        <th data-sort="6">Tidying Up Rooms <i class="fas fa-sort"></i></th>
+                        <th data-sort="7">Selecting Gifts <i class="fas fa-sort"></i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -527,8 +527,8 @@
                     <h4>Object Understanding Dimension</h4>
                     <p>Evaluate the model's ability in object recognition, counting, value assessment, and selection</p>
                     <ul>
-                        <li>Object Counting: Identify and count specific objects in a scene</li>
-                        <li>Choosing Gifts: Select appropriate items based on scenario requirements</li>
+                        <li>Counting Objects: Identify and count specific objects in a scene</li>
+                        <li>Selecting Gifts: Select appropriate items based on scenario requirements</li>
                     </ul>
                 </div>
                 <div class="dimension-card">
@@ -536,7 +536,7 @@
                     <p>Evaluate the model's spatial reasoning and embodied task planning capabilities</p>
                     <ul>
                         <li>Building Blocks: Understand and execute block building instructions</li>
-                        <li>Smart Puzzle: Recognize patterns and complete puzzle tasks</li>
+                        <li>Jigsaw Puzzle: Recognize patterns and complete puzzle tasks</li>
                         <li>Understanding Buttons: Identify button functions and predict operation results</li>
                     </ul>
                 </div>
@@ -544,9 +544,9 @@
                     <h4>Social Activity Dimension</h4>
                     <p>Evaluate the model's planning and execution capabilities in social scenarios</p>
                     <ul>
-                        <li>Tidying Desk: Arrange items reasonably based on categories and spatial relationships</li>
-                        <li>Cleaning Room: Plan cleaning tasks and execute reasonable operation sequences</li>
-                        <li>Packing Luggage: Select and organize appropriate items based on travel needs</li>
+                        <li>Setting Tables: Arrange items reasonably based on categories and spatial relationships</li>
+                        <li>Tidying Up Rooms: Plan cleaning tasks and execute reasonable operation sequences</li>
+                        <li>Preparing Baggage: Select and organize appropriate items based on travel needs</li>
                     </ul>
                 </div>
             </div>
@@ -605,40 +605,40 @@
     <script>
         // Test data - 17 models' scores on 8 tasks
         const modelData = [
-            { name: "Gemini-Pro-2.5", scores: [48.00, 12.38, 10.00, 15.00, 0.00, 26.68, 22.77, 68.06], avg: 25.36 },
-            { name: "OpenAI o3", scores: [54.00, 10.30, 10.00, 17.38, 8.33, 14.31, 18.77, 65.92], avg: 24.88 },
-            { name: "Gemini-Flash-2.5", scores: [42.00, 11.05, 5.50, 15.60, 3.33, 25.83, 23.22, 68.20], avg: 24.34 },
-            { name: "GPT-5", scores: [36.00, 9.50, 3.75, 15.00, 3.33, 28.68, 16.00, 69.06], avg: 22.67 },
-            { name: "Claude-4-Sonnet", scores: [44.00, 5.18, 8.75, 15.33, 0.00, 19.81, 14.85, 66.44], avg: 21.67 },
-            { name: "Claude-3.7-Sonnet", scores: [46.00, 3.40, 8.88, 14.83, 0.00, 22.76, 16.12, 59.74], avg: 21.59 },
-            { name: "Claude-3.5-Sonnet", scores: [42.00, 6.00, 8.00, 15.45, 0.00, 12.33, 13.47, 64.24], avg: 20.19 },
-            { name: "Grok3", scores: [52.00, 3.35, 9.88, 13.93, 0.00, 8.37, 17.20, 50.24], avg: 19.37 },
-            { name: "Doubao-vision-pro-32k", scores: [36.00, 7.75, 12.50, 12.58, 0.00, 24.17, 4.22, 56.70], avg: 19.24 },
-            { name: "OpenAI o4-mini", scores: [38.00, 4.23, 0.00, 14.83, 1.67, 13.67, 1.52, 66.40], avg: 17.54 },
-            { name: "GPT-4o", scores: [32.00, 8.18, 10.00, 15.40, 1.67, 18.42, 6.50, 46.30], avg: 17.38 },
-            { name: "GPT-4o-mini", scores: [34.00, 3.75, 5.75, 14.90, 1.67, 19.07, 1.50, 54.96], avg: 16.95 },
-            { name: "Qwen-VL-max", scores: [44.00, 0.00, 0.00, 15.20, 1.67, 15.96, 1.25, 48.14], avg: 15.78 },
-            { name: "Llama-4-Scout-17B-128E-Instruct", scores: [36.00, 3.00, 3.75, 15.73, 0.00, 15.75, 0.42, 50.30], avg: 15.62 },
-            { name: "Llama-4-Scout-17B-16E-Instruct", scores: [28.00, 2.00, 6.25, 15.73, 0.00, 8.94, 1.38, 42.56], avg: 13.11 },
-            { name: "Qwen-VL-plus", scores: [6.00, 0.38, 0.00, 15.90, 3.33, 16.67, 1.82, 34.16], avg: 9.78 },
-            { name: "Llama-3.1-90B-Vision-Instruct", scores: [6.00, 0.00, 0.00, 15.90, 0.00, 4.67, 0.42, 6.80], avg: 4.22 }
+            { name: "Gemini-2.5-Pro", scores: [48.00, 12.38, 10.00, 5.05, 3.33, 26.68, 22.77, 68.06], avg: 24.53 },
+            { name: "Gemini-2.5-Flash", scores: [42.00, 11.05, 5.50, 5.30, 3.33, 25.83, 23.22, 68.20], avg: 23.05 },
+            { name: "o3", scores: [54.00, 10.30, 10.00, 6.40, 3.33, 14.31, 18.77, 65.92], avg: 22.88 },
+            { name: "GPT-5", scores: [36.00, 9.50, 3.75, 6.03, 3.33, 28.68, 16.00, 69.06], avg: 21.54 },
+            { name: "Claude-3.7-Sonnet", scores: [46.00, 3.40, 8.88, 6.28, 0.00, 23.76, 16.12, 59.74], avg: 20.52 },
+            { name: "Claude-4-Sonnet", scores: [44.00, 5.18, 8.75, 6.03, 0.00, 19.81, 14.85, 66.44], avg: 20.51 },
+            { name: "Doubao-1.5-vision-pro", scores: [36.00, 7.75, 12.50, 6.88, 5.00, 24.17, 4.22, 56.70], avg: 19.15 },
+            { name: "Claude-3.5-Sonnet", scores: [42.00, 6.00, 8.00, 4.50, 0.00, 12.33, 13.47, 64.24], avg: 18.82 },
+            { name: "Grok 3", scores: [52.00, 3.35, 9.88, 8.00, 0.00, 8.37, 17.20, 50.24], avg: 18.63 },
+            { name: "o4-mini", scores: [38.00, 4.23, 0.00, 6.62, 3.33, 13.67, 1.52, 66.40], avg: 16.72 },
+            { name: "GPT-4o", scores: [32.00, 8.18, 10.00, 7.08, 3.33, 18.42, 6.30, 46.30], avg: 16.45 },
+            { name: "GPT-4o-mini", scores: [34.00, 3.75, 5.75, 7.05, 1.67, 19.07, 1.50, 54.96], avg: 15.97 },
+            { name: "Qwen-VL-max", scores: [44.00, 0.00, 0.00, 7.55, 0.00, 15.96, 1.25, 48.14], avg: 14.61 },
+            { name: "Llama-4-Maverick", scores: [36.00, 3.00, 3.75, 6.58, 0.00, 15.75, 0.42, 50.30], avg: 14.48 },
+            { name: "Llama-4-Scout", scores: [28.00, 2.00, 6.25, 5.72, 0.00, 8.94, 1.38, 42.56], avg: 11.86 },
+            { name: "Qwen-VL-plus", scores: [6.00, 0.38, 0.00, 7.65, 0, 16.67, 1.82, 34.16], avg: 8.33 },
+            { name: "Llama-3.2", scores: [6.00, 0.00, 0.00, 4.60, 0.00, 4.67, 0.42, 6.80], avg: 2.81 }
         ];
 
         // Task names
-        const tasks = ["Object Counting", "Packing Luggage", "Building Blocks", "Smart Puzzle", "Understanding Buttons", "Tidying Desk", "Cleaning Room", "Choosing Gifts"];
+        const tasks = ["Counting Objects", "Preparing Baggage", "Building Blocks", "Jigsaw Puzzle", "Understanding Buttons", "Setting Tables", "Tidying Up Rooms", "Selecting Gifts"];
 
         // Dimension definitions
         const dimensions = ["Object Understanding", "Spatial Intelligence", "Social Activity"];
 
         // Calculate each model's scores across three dimensions
         const dimensionData = modelData.map(model => {
-            // Object Understanding Dimension: Average of Object Counting(0) and Choosing Gifts(7)
+            // Object Understanding Dimension: Average of Counting Objects(0) and Selecting Gifts(7)
             const objectUnderstanding = (model.scores[0] + model.scores[7]) / 2;
             
-            // Spatial Intelligence Dimension: Average of Building Blocks(2), Smart Puzzle(3), Understanding Buttons(4)
+            // Spatial Intelligence Dimension: Average of Building Blocks(2), Jigsaw Puzzle(3), Understanding Buttons(4)
             const spatialIntelligence = (model.scores[2] + model.scores[3] + model.scores[4]) / 3;
             
-            // Social Activity Dimension: Average of Packing Luggage(1), Tidying Desk(5), Cleaning Room(6)
+            // Social Activity Dimension: Average of Preparing Baggage(1), Setting Tables(5), Tidying Up Rooms(6)
             const socialActivity = (model.scores[1] + model.scores[5] + model.scores[6]) / 3;
             
             // Dimension average score
