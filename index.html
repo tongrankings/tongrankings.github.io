@@ -444,7 +444,7 @@
         <!-- Ability View Content -->
         <section class="section" id="ability-view">
             <h2>Test Task Introduction</h2>
-            <p>This platform evaluates the performance of multimodal large models on 8 core test tasks, comprehensively measuring model capabilities in object recognition, spatial understanding, task planning, and more.</p>
+            <p>This platform evaluates the performance of multimodal large language models as embodied agents on 8 daily household composite tasks, comprehensively measuring model capabilities in object understanding, spatial intelligence, social activities, and more.</p>
             
             <div class="tasks-grid">
                 <div class="task-card">
@@ -500,7 +500,7 @@
                 <thead>
                     <tr>
                         <th data-sort="name">Model <i class="fas fa-sort"></i></th>
-                        <th data-sort="avg">Average Score <i class="fas fa-sort"></i></th>
+                        <th data-sort="avg">Equal Weighted Average <i class="fas fa-sort"></i></th>
                         <th data-sort="0">Counting Objects <i class="fas fa-sort"></i></th>
                         <th data-sort="1">Preparing Baggage <i class="fas fa-sort"></i></th>
                         <th data-sort="2">Building Blocks <i class="fas fa-sort"></i></th>
@@ -520,34 +520,20 @@
         <!-- Dimension View Content -->
         <section class="section hidden" id="dimension-view">
             <h2>Test Dimension Introduction</h2>
-            <p>This platform categorizes the 8 test tasks into 3 core dimensions, evaluating the comprehensive capabilities of multimodal large models from different perspectives.</p>
+            <p>This platform categorizes the 8 tasks into 3 core dimensions, evaluating the comprehensive capabilities of multimodal large language models from different perspectives.</p>
             
             <div class="dimension-grid">
                 <div class="dimension-card">
                     <h4>Object Understanding Dimension</h4>
-                    <p>Evaluate the model's ability in object recognition, counting, value assessment, and selection</p>
-                    <ul>
-                        <li>Counting Objects: Identify and count specific objects in a scene</li>
-                        <li>Selecting Gifts: Select appropriate items based on scenario requirements</li>
-                    </ul>
+                    <p>Evaluate the model's ability in object recognition, counting, value assessment, and selection. Tasks include "Counting Objects" and "Selecting Gifts". </p>
                 </div>
                 <div class="dimension-card">
                     <h4>Spatial Intelligence Dimension</h4>
-                    <p>Evaluate the model's spatial reasoning and embodied task planning capabilities</p>
-                    <ul>
-                        <li>Building Blocks: Understand and execute block building instructions</li>
-                        <li>Jigsaw Puzzle: Recognize patterns and complete puzzle tasks</li>
-                        <li>Understanding Buttons: Identify button functions and predict operation results</li>
-                    </ul>
+                    <p>Evaluate the model's spatial reasoning and embodied task planning capabilities. Tasks include "Building Blocks", "Jigsaw Puzzle", and "Understanding Buttons". </p>
                 </div>
                 <div class="dimension-card">
                     <h4>Social Activity Dimension</h4>
-                    <p>Evaluate the model's planning and execution capabilities in social scenarios</p>
-                    <ul>
-                        <li>Setting Tables: Arrange items reasonably based on categories and spatial relationships</li>
-                        <li>Tidying Up Rooms: Plan cleaning tasks and execute reasonable operation sequences</li>
-                        <li>Preparing Baggage: Select and organize appropriate items based on travel needs</li>
-                    </ul>
+                    <p>Evaluate the model's planning and execution capabilities in social scenarios. Tasks include "Setting Tables", "Tidying Up Rooms", and "Preparing Baggage".</p>
                 </div>
             </div>
         </section>
@@ -570,7 +556,7 @@
                 <thead>
                     <tr>
                         <th data-sort="name">Model <i class="fas fa-sort"></i></th>
-                        <th data-sort="avg">Average Score <i class="fas fa-sort"></i></th>
+                        <th data-sort="avg">Dimension Weighted Average <i class="fas fa-sort"></i></th>
                         <th data-sort="0">Object Understanding <i class="fas fa-sort"></i></th>
                         <th data-sort="1">Spatial Intelligence <i class="fas fa-sort"></i></th>
                         <th data-sort="2">Social Activity <i class="fas fa-sort"></i></th>
@@ -610,7 +596,7 @@
             { name: "o3", scores: [54.00, 10.30, 10.00, 6.40, 3.33, 14.31, 18.77, 65.92], avg: 22.88 },
             { name: "GPT-5", scores: [36.00, 9.50, 3.75, 6.03, 3.33, 28.68, 16.00, 69.06], avg: 21.54 },
             { name: "Claude-3.7-Sonnet", scores: [46.00, 3.40, 8.88, 6.28, 0.00, 23.76, 16.12, 59.74], avg: 20.52 },
-            { name: "Claude-4-Sonnet", scores: [44.00, 5.18, 8.75, 6.03, 0.00, 19.81, 14.85, 66.44], avg: 20.51 },
+            { name: "Claude-4-Sonnet", scores: [44.00, 5.18, 8.75, 6.03, 0.00, 19.81, 14.85, 65.44], avg: 20.51 },
             { name: "Doubao-1.5-vision-pro", scores: [36.00, 7.75, 12.50, 6.88, 5.00, 24.17, 4.22, 56.70], avg: 19.15 },
             { name: "Claude-3.5-Sonnet", scores: [42.00, 6.00, 8.00, 4.50, 0.00, 12.33, 13.47, 64.24], avg: 18.82 },
             { name: "Grok 3", scores: [52.00, 3.35, 9.88, 8.00, 0.00, 8.37, 17.20, 50.24], avg: 18.63 },
@@ -642,7 +628,7 @@
             const socialActivity = (model.scores[1] + model.scores[5] + model.scores[6]) / 3;
             
             // Dimension average score
-            const dimensionAvg = (objectUnderstanding + spatialIntelligence + socialActivity) / 3;
+            const dimensionAvg = model.avg;
             
             return {
                 name: model.name,
@@ -719,14 +705,14 @@
                 
                 // Average score
                 const avgCell = document.createElement('td');
-                avgCell.textContent = model.avg.toFixed(1);
+                avgCell.textContent = model.avg.toFixed(2);
                 avgCell.className = 'score-cell';
                 row.appendChild(avgCell);
                 
                 // Task scores
                 model.scores.forEach(score => {
                     const scoreCell = document.createElement('td');
-                    scoreCell.textContent = score;
+                    scoreCell.textContent = score.toFixed(2);
                     scoreCell.className = 'score-cell';
                     row.appendChild(scoreCell);
                 });
@@ -770,14 +756,14 @@
                 
                 // Average score
                 const avgCell = document.createElement('td');
-                avgCell.textContent = model.avg.toFixed(1);
+                avgCell.textContent = model.avg.toFixed(2);
                 avgCell.className = 'score-cell';
                 row.appendChild(avgCell);
                 
                 // Dimension scores
                 model.scores.forEach(score => {
                     const scoreCell = document.createElement('td');
-                    scoreCell.textContent = score.toFixed(1);
+                    scoreCell.textContent = score.toFixed(2);
                     scoreCell.className = 'score-cell';
                     row.appendChild(scoreCell);
                 });
